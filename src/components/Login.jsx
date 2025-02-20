@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { database } from './firebaseconfig';
+import { getAuth } from "firebase/auth";
+
 import { 
   Avatar, 
   Button, 
