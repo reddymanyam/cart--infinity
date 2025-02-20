@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { database } from './firebaseconfig';
-import { getAuth } from "firebase/auth";
-
 import { 
   Avatar, 
   Button, 
@@ -41,19 +37,12 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    signInWithEmailAndPassword(database, email, password)
-      .then((userCredential) => {
-        setTimeout(() => {
-          setIsLoading(false);
-          navigate('/');
-        }, 1000); // Simulate loading for better UX
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        const errorMessage = error.message;
-        alert(`Failed to log in: ${errorMessage}`);
-      });
+
+    // Simulate login process
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('/'); // Redirect after login
+    }, 1000); // Simulate loading for better UX
   };
 
   const handlePasswordVisibility = () => {

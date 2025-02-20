@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { database } from './firebaseconfig';
-import { 
-  Avatar, 
-  Button, 
-  Grid, 
-  Paper, 
+import {
+  Avatar,
+  Button,
+  Grid,
+  Paper,
   TextField,
   Typography,
   Box,
@@ -31,7 +29,6 @@ import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -50,21 +47,14 @@ const Signup = () => {
       alert("Please agree to the Terms of Service and Privacy Policy");
       return;
     }
-    
+
     setIsLoading(true);
     
-    createUserWithEmailAndPassword(database, email, password)
-      .then((data) => {
-        setTimeout(() => {
-          setIsLoading(false);
-          navigate('/login');
-        }, 1000); // Simulate loading for better UX
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        const errorMessage = error.message;
-        alert(`Failed to sign up: ${errorMessage}`);
-      });
+    // Simulate registration for now (you can replace it with an actual API call later)
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('/login');
+    }, 1000); // Simulate loading for better UX
   };
 
   const handlePasswordVisibility = () => {
@@ -75,13 +65,13 @@ const Signup = () => {
   const checkPasswordStrength = (value) => {
     setPassword(value);
     let strength = 0;
-    
+
     if (value.length > 6) strength += 1;
     if (value.length > 10) strength += 1;
     if (/[A-Z]/.test(value)) strength += 1;
     if (/[0-9]/.test(value)) strength += 1;
     if (/[^A-Za-z0-9]/.test(value)) strength += 1;
-    
+
     setPasswordStrength(strength);
   };
 
@@ -337,7 +327,7 @@ const Signup = () => {
                   <Typography variant="body2">
                     I agree to the{' '}
                     <MuiLink 
-                      href="#" 
+                      href="#"
                       sx={{
                         color: '#21b095',
                         textDecoration: 'none',
@@ -350,7 +340,7 @@ const Signup = () => {
                     </MuiLink>
                     {' '}and{' '}
                     <MuiLink 
-                      href="#" 
+                      href="#"
                       sx={{
                         color: '#21b095',
                         textDecoration: 'none',
